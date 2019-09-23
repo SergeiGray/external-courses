@@ -14,6 +14,7 @@ let checksForSimilarity = function(array) {
 		return false;
 	});
 	console.log(results);
+	return results;
 };
 
 module.exports = checksForSimilarity;

@@ -24,6 +24,7 @@ let displaysEvenOdd = function(array) {
 	});
 	console.log('Четных элементов: ' + results[0] + ',  ' + 'Нечетных элементов: ' + results[1] + ',  ' + 'Нулей: ' + results[2]);
 	console.log(results);
+	return results;
 };
 
 module.exports = displaysEvenOdd;
