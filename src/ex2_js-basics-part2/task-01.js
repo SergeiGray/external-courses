@@ -7,7 +7,7 @@ let definesDataType = function(argument) {
 		case 'string':
 			return 'string';
 		default:
-			return 'undefined';
+			return undefined;
 	}
 };
 
