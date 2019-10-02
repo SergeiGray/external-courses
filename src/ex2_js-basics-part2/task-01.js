@@ -1,7 +1,7 @@
 'use strict';
 
-let definesDataType = function(argument) {
-	switch (typeof(argument)) {
+function definesDataType(argument) {
+	switch (typeof argument) {
 		case 'number': 
 			return 'number';
 		case 'string':

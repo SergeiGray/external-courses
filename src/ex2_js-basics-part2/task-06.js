@@ -1,6 +1,6 @@
 'use strict';
 
-let checksPrime = function(elem) {
+function checksPrime(elem) {
 	let number;
 	if(Math.abs(elem) < 1000 & Math.abs(elem) !== 1 & Math.abs(elem) !== 0) {
 		number = Math.abs(elem);

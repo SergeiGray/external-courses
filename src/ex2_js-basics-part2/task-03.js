@@ -1,9 +1,7 @@
 'use strict';
 
-let displaysEvenOdd = function(array) {
-
+function displaysEvenOdd(array) {
 	let results = [0,0,0];
-
 	array.forEach(function(elem) {
 		if(typeof(elem) === 'number') {
 			switch (elem % 2 === 0) {
