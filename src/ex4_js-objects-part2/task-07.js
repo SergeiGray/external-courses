@@ -1,7 +1,7 @@
 'use strict';
 
 function croppingLine(str, num) {
-	let strNew;
+	let strNew = str;
 	if(str.length > num) {
 		strNew = str.substr(0, num - 1) + '…';
 	}
