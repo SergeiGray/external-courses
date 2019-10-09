@@ -1,6 +1,6 @@
 'use strict';
 
-function copiesAnObject(obj) {
+function copyAnObject(obj) {
 	const newObj = {};
 	for(let key in obj) {
 		if(obj.hasOwnProperty(key)) {
@@ -10,4 +10,4 @@ function copiesAnObject(obj) {
 	return newObj;
 };
 
-module.exports = copiesAnObject;
+module.exports = copyAnObject;

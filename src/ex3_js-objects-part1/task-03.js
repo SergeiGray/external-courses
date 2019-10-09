@@ -1,17 +1,12 @@
 'use strict';
 
 function checksСontains(str, obj) {
-	let flag = false;
 	for(let key in obj) {
-		if(obj.hasOwnProperty(key)) {
-			if(key === str) {
-				flag = true;
-			} else {
-				flag = false;
-			}
+		if(obj.hasOwnProperty(key) && key === str) {
+			return true;
 		}
 	}
-	return flag;
+	return false;
 };
 
 module.exports = checksСontains;

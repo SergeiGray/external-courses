@@ -1,19 +1,11 @@
 'use strict';
 
 function checksСontainsAndAppend(str, obj) {
-	let flag = false;
 	const newObj = obj;
 	for(let key in newObj) {
-		if(newObj.hasOwnProperty(key)) {
-			if(key === str) {
-				flag = true;
-			} else {
-				flag = false;
-			}
+		if(newObj.hasOwnProperty(key) && key !== str) {
+				newObj[str] = 'new';
 		}
-	}
-	if(!flag) {
-		newObj[str] = 'new';
 	}
 	return newObj;
 };
