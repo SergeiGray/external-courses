@@ -1,6 +1,6 @@
 'use strict';
 
-const Calculator = (function Calculator() {
+(function Calculator() {
 	let result = 0;
 	function add(num = 0) {
 		result += num;
@@ -38,8 +38,3 @@ const Calculator = (function Calculator() {
 }());
 
 module.exports = Calculator;
-
-// console.log(Calculator.divide(2)(2)(3));
-// console.log(Calculator.reset());
-
-// console.log( Calculator.getResult() );
