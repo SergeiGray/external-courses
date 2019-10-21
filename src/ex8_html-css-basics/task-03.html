@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Task-03</title>
+	<style>
+		div {
+			width: 100px;
+			height: 100px;
+			margin: 0 auto 20px;
+		}
+		.first {
+			border: 1px solid red;
+		}
+		.second {
+			outline: 1px solid green;
+		}
+		.third {
+			box-shadow: 0 0 0 1px blue;
+		}
+		.fourth {
+			position: relative;
+		}
+		.fourth::after {
+			position: absolute;
+			top: -2px;
+			left: -2px;
+			content: '';
+			width: 102px;
+			height: 102px;
+			border: 1px solid yellow;
+		}
+		.fifth {
+			background: linear-gradient(0deg, black 0%, rgba(0,0,0,0) 1%, rgba(0,0,0,0) 99%, black 100%), linear-gradient(90deg, black 0%, rgba(0,0,0,0) 1%, rgba(0,0,0,0) 99%, black 100%);
+		}
+	</style>
+</head>
+<body>
+	<div class="first">1</div>
+	<div class="second">2</div>
+	<div class="third">3</div>
+	<div class="fourth">4</div>
+	<div class="fifth">5</div>
+</body>
+</html>

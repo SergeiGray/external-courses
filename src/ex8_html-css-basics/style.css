@@ -1,0 +1,27 @@
+.wrapper {
+	width: 50vw;
+	margin: 0 auto;
+}
+
+@keyframes move {
+	from {
+		margin-left: 0px;
+	}
+	to {
+		margin-left: 400px;
+	}
+}
+
+.third {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 5cm;
+	height: 5cm;
+	background-image: url('http://placehold.it/100x100');
+	font-family: 'Lobster', cursive;
+	font-size: 50px;
+	color: #12dde0;
+	text-align: center;
+	animation: move 6s infinite alternate linear;
+}
