@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task-additional</title>
+	<style>
+		section {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			width: 50%;
+			margin: 0 auto;
+		}
+		h1 {
+			margin: 0;
+		}
+		p {
+			margin: 0;
+			color: red;
+		}
+		hr {
+			width: 100%;
+			margin-bottom: 15px;
+		}
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+		}
+		label {
+			position: relative;			
+			width: 100%;
+			margin-bottom: 20px;
+		}
+		label:last-of-type {
+			display: flex;
+			align-items: flex-start;
+		}
+		span {
+			display: inline-block;
+			min-width: 15%;
+		}
+		input {
+			min-width: 40%;
+			min-height: 35px;
+			border-radius: 7px;
+			border: 1px solid #dfdfdf;
+			box-sizing: border-box;
+			padding: 0 20px;
+		}
+		textarea {
+			resize: none;
+			min-width: 45%;
+			min-height: 100px;
+			border-radius: 7px;
+			border: 1px solid #dfdfdf;
+			box-sizing: border-box;
+			padding: 0 20px;
+		}
+		button {
+			min-width: 25%;
+			min-height: 35px;
+			border-radius: 7px;
+			border: 1px solid #dfdfdf;
+			font-weight: 600;
+			margin-left: 10%;
+			box-shadow: 0 5px 10px -5px black;
+		}
+		.marker::after {
+			position: absolute;
+			top: calc(50% - 13px);
+			right: 68px;
+			content: 'Form field hint';
+			min-height: 25px;
+			padding: 0 25px;
+			line-height: 25px;
+			background-color: #d45252;
+			color: #fff;
+		}
+		.marker::before {
+			position: absolute;
+			top: calc(50% - 10px);
+			right: 210px;
+			content: '';
+			border: 10px solid transparent;
+	    border-right: 10px solid #d45252;
+		}
+	</style>
+</head>
+<body>
+	<section>
+		<h1>Form Here</h1>
+		<p>* required fields</p>
+		<hr>
+		<form action="#">
+			<label>
+				<span>Name:</span>
+				<input type="text" placeholder="placeholder text">
+			</label>
+			<label class="marker">
+				<span>Email:</span>
+				<input type="email" placeholder="placeholder text">
+			</label>
+			<label class="marker">
+				<span>Website:</span>
+				<input type="url" placeholder="placeholder text">
+			</label>
+			<label>
+				<span>Message:</span>
+				<textarea></textarea>
+			</label>
+			<button type="submit">Submit</button>
+		</form>
+	</section>
+</body>
+</html>
