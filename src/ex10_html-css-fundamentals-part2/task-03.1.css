@@ -1,0 +1,31 @@
+body {
+	margin: 0;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 14px;
+	color: #8494a4;
+}
+#table {
+	/*width: 580px;*/
+}
+.header {
+	text-transform: uppercase;
+	font-size: 12px;
+}
+.header th {
+	height: 25px;
+}
+.customer {
+	text-transform: capitalize;
+}
+.first_col {
+	width: 130px;
+}
+.second_col {
+	width: 135px;
+}
+.third_col {
+	width: 195px;
+}
+.fourth_col {
+	width: 110px;
+}
