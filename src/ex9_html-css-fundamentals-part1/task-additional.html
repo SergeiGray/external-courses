@@ -66,6 +66,10 @@
 			margin-left: 10%;
 			box-shadow: 0 5px 10px -5px black;
 		}
+		.marker {
+			display: inline-block;
+			margin-left: auto;
+		}
 		.marker::after {
 			position: absolute;
 			top: calc(50% - 13px);
@@ -85,6 +89,21 @@
 			border: 10px solid transparent;
 	    border-right: 10px solid #d45252;
 		}
+		input:invalid {
+			box-shadow: none;
+		}
+		input:invalid + .marker::after {
+			background-color:  #d45252;
+		}
+		input:invalid + .marker::before {
+			border-right-color:  #d45252;
+		}
+		input:valid + .marker::after {
+			background-color: green;
+		}
+		input:valid + .marker::before {
+			border-right-color:  green;
+		}		
 	</style>
 </head>
 <body>
@@ -97,13 +116,15 @@
 				<span>Name:</span>
 				<input type="text" placeholder="placeholder text">
 			</label>
-			<label class="marker">
+			<label>
 				<span>Email:</span>
-				<input type="email" placeholder="placeholder text">
+				<input type="email" placeholder="placeholder text" required>
+				<p class="marker"></p>
 			</label>
-			<label class="marker">
+			<label>
 				<span>Website:</span>
-				<input type="url" placeholder="placeholder text">
+				<input type="url" placeholder="placeholder text" required>
+				<p class="marker"></p>
 			</label>
 			<label>
 				<span>Message:</span>
