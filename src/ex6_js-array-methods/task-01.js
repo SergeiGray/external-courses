@@ -4,13 +4,12 @@ let getSliceOfArray = (array, begin, end) => {
 	let newArray = [];
 	let newEnd = end;
 	let i, j;
-	switch (true) {
-		case begin === undefined && newEnd === undefined :
-			for(i = 0; i < array.length; i++) {
-				newArray[i] = array[i];
-			}
-			break;
-		case Number.isInteger(begin) && (Number.isInteger(newEnd) || newEnd === undefined) :
+	if(begin === undefined && newEnd === undefined) {
+		for( let k = 0; k < array.length; k++) {
+			newArray[k] = array[k];
+		}
+	}
+	if (Number.isInteger(begin) && (Number.isInteger(newEnd) || newEnd === undefined)) {
 			if(newEnd === undefined) {
 				newEnd = array.length;
 			} else {}
@@ -27,13 +26,9 @@ let getSliceOfArray = (array, begin, end) => {
 			if(j < i) {
 				j = array.length;
 			}
-			for( i ; i < j; i++) {
-				newArray.push(array[i]);
+			for( let k = i, l = j ; k < l; k++) {
+				newArray.push(array[k]);
 			}
-			break;
-		default:
-			console.log('Введены некорректные данные');
-			break;
 	}
 	return newArray;
 };
