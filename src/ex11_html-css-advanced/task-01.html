@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 01</title>
+	<style>
+		.wrapper {
+			max-width: 600px;
+			margin: 0 auto;
+		}
+
+		.loader {
+			width: 40px;
+			height: 40px;
+			border: 10px solid rgba(150,150,150, 0.2); 
+			border-top-color: rgba(150,150,150, 1);
+			border-radius: 50%;
+			animation: animate_one 3s infinite linear;
+		}
+
+		@keyframes animate_one {
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(360deg); 
+			}
+		}
+
+		.bouncing_ball_container {
+			position: relative;
+			display: -webkit-flex;
+			display: -moz-flex;
+			display: -ms-flex;
+			display: -o-flex;
+			display: flex;
+			justify-content: space-between;
+			width: 100%;
+			height: 200px;
+		}
+
+		.bouncing_ball_wall {
+			height: 100%;
+			width: 60px;
+			background-color: pink;
+		}
+
+		.bouncing_ball {
+			position: absolute;
+			left: 60px;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			border: 5px solid lightpink;
+			background-color: pink;
+			animation: animate_two 2s infinite alternate linear;
+		}
+
+		@keyframes animate_two {
+			0% {
+				transform: translate(0,0);
+			}
+			25% {
+				transform: translate(700%,60%);
+			}
+			50% {
+				transform: translate(0,120%);
+			}
+			75% {
+				transform: translate(700%,180%);
+			}				
+			100% {
+				transform: translate(0,0);
+			}
+		}
+
+		.something_incomprehensible_and_infinite {
+			width: 80px;
+			height: 80px;
+			border-radius: 50%;
+			background: linear-gradient(red, black);
+			animation: animation_three 10s infinite alternate linear;
+		}
+
+		@keyframes animation_three{
+			0% {
+			}
+			15% {
+				border-radius: 0;
+			}
+			30% {
+				background: linear-gradient(blue, black);
+			}
+			45% {
+				width: 140px;
+				height: 140px;
+				transform: skew(10deg);
+			}
+			60% {
+				transform: rotate3d(1, 1, 0, 180deg);
+			}
+			75% {
+				background: linear-gradient(red, black);
+			}
+			100% {
+				border-radius: 50%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="loader"></div>
+		<hr>
+		<div class="bouncing_ball_container">
+			<div class="bouncing_ball_wall"></div>
+			<div class="bouncing_ball"></div>
+			<div class="bouncing_ball_wall"></div>
+		</div>
+		<hr>
+		<div class="something_incomprehensible_and_infinite"></div>
+	</div>
+</body>
+</html>
