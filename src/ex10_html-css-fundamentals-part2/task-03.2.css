@@ -1,0 +1,15 @@
+.row {
+	background-color: #f2f6fa;
+}
+.row:nth-child(2n + 1) {
+	background-color: #e3eaf3;
+}
+.row:not(:first-child) {
+	height: 48px;
+}
+.row:not(:first-child):hover {
+	background-color: #e2e5e9;
+}
+.row td {
+	text-align: center;
+}
