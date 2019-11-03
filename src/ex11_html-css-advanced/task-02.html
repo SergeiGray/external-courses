@@ -16,19 +16,23 @@
 			-o-flex-direction: column;
 			flex-direction: column;
 		}
+
 		fieldset {
 			position: relative;
 			border: none;
 			margin-bottom: 15px;
 		}
+
 		input {
 			width: 250px;
 			height: 45px;
 			font-size: 20px;
 		}
+
 		input::placeholder {
 			font-size: 20px;
 		}
+
 		label {
 			position: absolute;
 			left: 15px;
@@ -37,35 +41,44 @@
 			transition: all 1s linear;
 			font-size: 10px;
 		}
+
 		label[for="input_third"] {
 			left: 270px;
 		}
+
 		#input_first,
 		#input_fourth {
 			border: none;
 		}
+
 		#input_second {
 			border-left: none;
 		}
+
 		#input_third {
 			border-right: none;
 			margin-left: -5px;
 		}
+
 		input:invalid {
 			outline: none;
 			box-shadow: none;
 		}
+
 		input:invalid + label { 
 			top:5px; 
 			opacity: 0; 
 		}
+
 		input:valid + label { 
 			top: -10px;
 			opacity: 1;
 		}
+
 		input:focus { 
 			outline:none;
 		}
+		
 		input:focus + label { 
 			color: blue; 
 		}
