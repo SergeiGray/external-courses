@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 02</title>
+	<style>
+		form {
+			display: -webkit-flex;
+			display: -moz-flex;
+			display: -ms-flex;
+			display: -o-flex;
+			display: flex;
+			-webkit-flex-direction: column;
+			-moz-flex-direction: column;
+			-ms-flex-direction: column;
+			-o-flex-direction: column;
+			flex-direction: column;
+		}
+
+		fieldset {
+			position: relative;
+			border: none;
+			margin-bottom: 15px;
+		}
+
+		input {
+			width: 250px;
+			height: 45px;
+			font-size: 20px;
+		}
+
+		input::placeholder {
+			font-size: 20px;
+		}
+
+		label {
+			position: absolute;
+			left: 15px;
+			color: grey;
+			opacity: 0.3;
+			transition: all 1s linear;
+			font-size: 10px;
+		}
+
+		label[for="input_third"] {
+			left: 270px;
+		}
+
+		#input_first,
+		#input_fourth {
+			border: none;
+		}
+
+		#input_second {
+			border-left: none;
+		}
+
+		#input_third {
+			border-right: none;
+			margin-left: -5px;
+		}
+
+		input:invalid {
+			outline: none;
+			box-shadow: none;
+		}
+
+		input:invalid + label { 
+			top:5px; 
+			opacity: 0; 
+		}
+
+		input:valid + label { 
+			top: -10px;
+			opacity: 1;
+		}
+
+		input:focus { 
+			outline:none;
+		}
+		
+		input:focus + label { 
+			color: blue; 
+		}
+	</style>
+</head>
+<body>
+	<form action="#" class="form">
+		<fieldset>
+			<input id="input_first" type="text" placeholder="Title" required="">
+			<label for="input_first">Title</label>
+		</fieldset>
+		<fieldset>
+			<input id="input_second" type="text" placeholder="Price" required="">
+			<label for="input_second">Price</label>
+			<input id="input_third" type="text" placeholder="Specific Location (optional)" required="">
+			<label for="input_third">Specific Location (optional)</label>
+		</fieldset>
+		<fieldset>
+			<input id="input_fourth" type="text" placeholder="Description" required="">
+			<label for="input_fourth">Description</label>
+		</fieldset>
+	</form>
+</body>
+</html> 
