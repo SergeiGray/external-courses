@@ -25,4 +25,4 @@
   	});
   };
 
-  debounce(search(searchSpace, searchOptions));
+  debounce(search(searchSpace, searchOptions), DEBOUNCE_INTERVAL);
