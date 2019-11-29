@@ -140,9 +140,6 @@ const handlerList = {
 	saveTask: function (eventKanbanUnit) {
 		let previousKanbanUnit = 'ready';
 		let select = eventKanbanUnit.target;
-		if (select === null) {
-			alert('Пришел НУЛЬ');
-		}
 		let enteredText = select.value;
 		mockData[select.dataset.unit].push(enteredText);
 		mockData[select.dataset.previousunit].splice(select.selectedIndex - 1, 1);
