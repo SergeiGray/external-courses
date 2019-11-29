@@ -55,10 +55,6 @@ const kanbanElements = {
 		let selectElement = document.createElement('select');
 		let optionElementHidden = new Option('Выберите задачу');
 		let previousUnit;
-		optionElementHidden.classList.add('kanban_option_hidden');
-		selectElement.setAttribute('class', 'kanban_select');
-		selectElement.append(optionElementHidden);
-		selectElement.setAttribute('id', `${unit}_select`);
 		switch (unit) {
 			case 'ready':
 				previousUnit = 'backlog';
@@ -72,10 +68,16 @@ const kanbanElements = {
 			default:
 			break;	
 		}
+		optionElementHidden.classList.add('kanban_option_hidden');
+		selectElement.setAttribute('class', 'kanban_select');
+		selectElement.append(optionElementHidden);
+		selectElement.setAttribute('id', `${unit}_select`);
+		selectElement.setAttribute('data-unit', unit);
+		selectElement.setAttribute('data-previousunit', previousUnit);
 		mockData[previousUnit].forEach(function(el) {
 			let optionElement = new Option(el, el);
 			optionElement.setAttribute('class', 'kanban_option');
-			selectElement.addEventListener('change', handlerList.saveTask.bind(null, unit, previousUnit));
+			selectElement.addEventListener('change', handlerList.saveTask);
 			selectElement.append(optionElement);
 		});
 		return selectElement;
@@ -135,11 +137,15 @@ const handlerList = {
 			}
 		}
 	},
-	saveTask: function (kanbanUnit, previousKanbanUnit) {
-		let select = document.getElementById(`${kanbanUnit}_select`);
+	saveTask: function (eventKanbanUnit) {
+		let previousKanbanUnit = 'ready';
+		let select = eventKanbanUnit.target;
+		if (select === null) {
+			alert('Пришел НУЛЬ');
+		}
 		let enteredText = select.value;
-		mockData[kanbanUnit].push(enteredText);
-		mockData[previousKanbanUnit].splice(select.selectedIndex - 1, 1);
+		mockData[select.dataset.unit].push(enteredText);
+		mockData[select.dataset.previousunit].splice(select.selectedIndex - 1, 1);
 		renderData(mockData);
 		select.remove();
 	}
