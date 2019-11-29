@@ -30,11 +30,11 @@ let buttonReadyAdd = document.getElementById('ready_add');
 let buttonProgressAdd = document.getElementById('progress_add');
 let buttonFinishedAdd = document.getElementById('finished_add');
 
-const createElements = {
-	headerDropdown: function (arr) {
+const kanbanElements = {
+	createHeaderDropdown: function (arrayMenuItems) {
 		let listElement = document.createElement('ul');
 		listElement.setAttribute('class', 'dropdown_list');
-		arr.forEach(function(el) {
+		arrayMenuItems.forEach(function(el) {
 			let itemElement = document.createElement('li');
 			let linkElement = document.createElement('a');
 			itemElement.setAttribute('class', 'dropdown_item');
@@ -45,48 +45,42 @@ const createElements = {
 		});
 		return listElement;
 	},
-	input: function () {
+	createInput: function () {
 		let inputElement = document.createElement('input');
 		inputElement.setAttribute('class', 'kanban_input');
-		inputElement.addEventListener('blur', handlerList.blurOnInputBacklog);
+		inputElement.addEventListener('blur', handlerList.saveTaskInBacklog);
 		return inputElement;
 	},
-	select: function (unit) {
+	createSelect: function (unit) {
 		let selectElement = document.createElement('select');
-		let optionElementHidden = new Option();
+		let optionElementHidden = new Option('Выберите задачу');
+		let previousUnit;
 		optionElementHidden.classList.add('kanban_option_hidden');
 		selectElement.setAttribute('class', 'kanban_select');
 		selectElement.append(optionElementHidden);
-		if (unit === 'ready') {
-			selectElement.setAttribute('id', 'ready_select');
-			mockData.backlog.forEach(function(el) {
-				let optionElement = new Option(el, el);
-				optionElement.setAttribute('class', 'kanban_option');
-				selectElement.addEventListener('change', handlerList.clickOnSelectReady);
-				selectElement.append(optionElement);
-			});
+		selectElement.setAttribute('id', `${unit}_select`);
+		switch (unit) {
+			case 'ready':
+				previousUnit = 'backlog';
+				break;
+			case 'progress':
+				previousUnit = 'ready';
+				break;
+			case 'finished':
+				previousUnit = 'progress';
+				break;
+			default:
+			break;	
 		}
-		if (unit === 'progress') {
-			selectElement.setAttribute('id', 'progress_select');
-			mockData.ready.forEach(function(el) {
-				let optionElement = new Option(el, el);
-				optionElement.setAttribute('class', 'kanban_option');
-				selectElement.addEventListener('change', handlerList.clickOnSelectProgress);
-				selectElement.append(optionElement);
-			});
-		}
-		if (unit === 'finished') {
-			selectElement.setAttribute('id', 'finished_select');
-			mockData.progress.forEach(function(el) {
-				let optionElement = new Option(el, el);
-				optionElement.setAttribute('class', 'kanban_option');
-				selectElement.addEventListener('change', handlerList.clickOnSelectFinished);
-				selectElement.append(optionElement);
-			});
-		}
+		mockData[previousUnit].forEach(function(el) {
+			let optionElement = new Option(el, el);
+			optionElement.setAttribute('class', 'kanban_option');
+			selectElement.addEventListener('change', handlerList.saveTask.bind(null, unit, previousUnit));
+			selectElement.append(optionElement);
+		});
 		return selectElement;
 	},
-	task: function () {
+	createTask: function () {
 		let itemElement = document.createElement('li');
 		itemElement.setAttribute('class', 'kanban_item');
 		return itemElement;
@@ -94,22 +88,22 @@ const createElements = {
 };
 
 const handlerList = {
-	clickOnLogin: function () {
+	openHeaderMenu: function () {
 		document.querySelector('.header_login_button').classList.toggle('dropdown_active');
 		if (document.querySelector('.dropdown_list') === null) {
-			addsItemsToDOM(createElements.headerDropdown(dropdownMenuItems), 'header_login');
+			mountItems(kanbanElements.createHeaderDropdown(dropdownMenuItems), 'header_login');
 		} else {
 			document.querySelector('.dropdown_list').remove();
 		}
 	},
-	clickBacklogAdd: function () {
+	addBacklogInput: function () {
 		if(document.querySelector('.kanban_input') === null) {
-			addsItemsToDOM(createElements.input(), 'backlog_footer', true);
+			mountItems(kanbanElements.createInput(), 'backlog_footer', true);
 			document.getElementById('backlog_add').classList.add('disable');
 			document.querySelector('.kanban_input').focus();
 		}
 	},
-	blurOnInputBacklog: function () {
+	saveTaskInBacklog: function () {
 		let input = document.querySelector('.kanban_input');
 		let button = document.getElementById('backlog_add');
 		let enteredText = input.value;
@@ -123,51 +117,35 @@ const handlerList = {
 			button.classList.remove('disable');
 		}
 	},
-	clickReadyAdd: function () {
-		if (document.getElementById('ready_select') === null && mockData.backlog.length > 0) {
-			addsItemsToDOM(createElements.select('ready'), 'ready_footer', true);
-			buttonReadyAdd.classList.add('disable');
+	addSelect: function (kanbanUnit, previousKanbanUnit) {
+		if (document.getElementById(`${kanbanUnit}_select`) === null && mockData[previousKanbanUnit].length > 0) {
+			mountItems(kanbanElements.createSelect(kanbanUnit), `${kanbanUnit}_footer`, true);
+			switch(kanbanUnit) {
+				case 'ready':
+					buttonReadyAdd.classList.add('disable');
+					break;
+				case 'progress':
+					buttonProgressAdd.classList.add('disable');
+					break;
+				case 'finished':
+					buttonProgressAdd.classList.add('disable');
+					break;
+				default:
+				break;
+			}
 		}
 	},
-	clickOnSelectReady: function () {
-		let select = document.getElementById('ready_select');
+	saveTask: function (kanbanUnit, previousKanbanUnit) {
+		let select = document.getElementById(`${kanbanUnit}_select`);
 		let enteredText = select.value;
-		mockData.ready.push(enteredText);
-		mockData.backlog.splice(select.selectedIndex - 1, 1);
-		renderData(mockData);
-		select.remove();
-	},	
-	clickProgressAdd: function () {
-		if (document.getElementById('progress_select') === null && mockData.ready.length > 0) {
-			addsItemsToDOM(createElements.select('progress'), 'progress_footer', true);
-			buttonProgressAdd.classList.add('disable');
-		}
-	},
-	clickOnSelectProgress: function () {
-		let select = document.getElementById('progress_select');
-		let enteredText = select.value;
-		mockData.progress.push(enteredText);
-		mockData.ready.splice(select.selectedIndex - 1, 1);
-		renderData(mockData);
-		select.remove();
-	},
-	clickFinishedAdd: function () {
-		if (document.getElementById('finished_select') === null && mockData.progress.length > 0) {
-			addsItemsToDOM(createElements.select('finished'), 'finished_footer', true);
-			buttonProgressAdd.classList.add('disable');
-		}
-	},
-	clickOnSelectFinished: function () {
-		let select = document.getElementById('finished_select');
-		let enteredText = select.value;
-		mockData.finished.push(enteredText);
-		mockData.progress.splice(select.selectedIndex - 1, 1);
+		mockData[kanbanUnit].push(enteredText);
+		mockData[previousKanbanUnit].splice(select.selectedIndex - 1, 1);
 		renderData(mockData);
 		select.remove();
 	}
 };
 
-const addsItemsToDOM = function (childrenElement, parentId, before = false) {
+const mountItems = function (childrenElement, parentId, before = false) {
 	let parentElement = document.getElementById(parentId);
 	if (before === true) {
 		parentElement.insertBefore(childrenElement, parentElement.firstElementChild);
@@ -183,9 +161,9 @@ const renderData = function (obj) {
 	for( let key in obj) {
 		if(true) {
 			obj[key].forEach(function(el) {
-				let item = createElements.task();
+				let item = kanbanElements.createTask();
 				item.textContent = el;
-				addsItemsToDOM(item, key + '_list');
+				mountItems(item, key + '_list');
 			});
 			if (key === 'ready') {
 				if(mockData.backlog.length === 0) {
@@ -231,10 +209,10 @@ const uploadFromLocalStorage = function () {
 
 window.addEventListener("load", downloadFromLocalStorage.bind(mockData));
 
-document.getElementById('header_login').addEventListener('click', handlerList.clickOnLogin);
-document.getElementById('backlog_add').addEventListener('click', handlerList.clickBacklogAdd);
-buttonReadyAdd.addEventListener('click', handlerList.clickReadyAdd);
-buttonProgressAdd.addEventListener('click', handlerList.clickProgressAdd);
-buttonFinishedAdd.addEventListener('click', handlerList.clickFinishedAdd);
+document.getElementById('header_login').addEventListener('click', handlerList.openHeaderMenu);
+document.getElementById('backlog_add').addEventListener('click', handlerList.addBacklogInput);
+buttonReadyAdd.addEventListener('click', handlerList.addSelect.bind(null, 'ready', 'backlog'));
+buttonProgressAdd.addEventListener('click', handlerList.addSelect.bind(null, 'progress', 'ready'));
+buttonFinishedAdd.addEventListener('click', handlerList.addSelect.bind(null, 'finished', 'progress'));
 
 window.addEventListener("unload", uploadFromLocalStorage);
