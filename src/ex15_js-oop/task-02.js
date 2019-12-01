@@ -13,7 +13,16 @@ class Room {
 		});
 		return powerCounter;
 	}
-
+	getSortPowerAppliance () {
+		return this.applianceListInRoom.sort( (a, b) =>
+			a.powerAppliance - b.powerAppliance);
+	}
+}
+class LivingRoom extends Room {
+	constructor (applianceList) {
+		super();
+		this.applianceListInRoom = applianceList;
+	}
 	findAppliance (nameAppliance) {
 		let applianceFlag = false;
 		this.applianceListInRoom.forEach( function (appliance) {
@@ -23,14 +32,7 @@ class Room {
 		});
 		return applianceFlag ? `:-) Прибор ${nameAppliance} есть в комнате` : `:-( Прибора ${nameAppliance} нет в комнате`;
 	}
-
-
-	getSortPowerAppliance () {
-		return this.applianceListInRoom.sort( (a, b) =>
-			a.powerAppliance - b.powerAppliance);
-	}
 }
-
 class Appliance {
 	constructor (nameValue, powerValue, connectionValue) {
 		this.name = nameValue;
@@ -45,7 +47,7 @@ let conditioner = new Appliance('Кондиционер', 2700, false);
 let lamp = new Appliance('Ламп', 100, true);
 let vacuumCleaner = new Appliance('Пылесос', 2100, false);
 
-let livingRoom = new Room([hairDryer, computer, conditioner, lamp, vacuumCleaner]);
+let livingRoom = new LivingRoom([hairDryer, computer, conditioner, lamp, vacuumCleaner]);
 
 console.log(`Мощность приборов в комнате ${livingRoom.getPowerConsumptionInRoom()} ватт`);
 console.log(livingRoom.getSortPowerAppliance());
