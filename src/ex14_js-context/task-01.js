@@ -41,7 +41,7 @@ class Calculator {
 		return this;
 	}
 	fetchData (callback) {
-		setTimeout(callback, 1000, 500);
+		setTimeout(() => callback(500), 1000);
 	}
 };
 

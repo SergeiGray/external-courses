@@ -2,56 +2,56 @@
 
 const Hangman = function (wordValue) {
 	this.word = wordValue.split('');
-	this.arrayGuessedLetters = new Array(this.word.length).fill('_');
-	this.arrayIncorrectLetters = new Array();
-	this.numberAttempts = 6;
+	this.guessedLetters = new Array(this.word.length).fill('_');
+	this.incorrectLetters = new Array();
+	this.attemptCount = 6;
 	this.guess = function (letter) {
-		let arrayGuessedLettersNew = this.arrayGuessedLetters;
-		let flagPresenceLetters = false;
+		let guessedLettersCopy = this.guessedLetters;
+		let isLetterContain = false;
 		this.word.forEach( function (letterValue, letterIndex) {
 			if(letterValue === letter) {
-				arrayGuessedLettersNew[letterIndex] = letterValue;
-				flagPresenceLetters = true;
+				guessedLettersCopy[letterIndex] = letterValue;
+				isLetterContain = true;
 			}	
 		});
-		if (flagPresenceLetters) {
-			this.arrayGuessedLetters = arrayGuessedLettersNew;
-			console.log(this.checksVictory(flagPresenceLetters));
+		if (isLetterContain) {
+			this.guessedLetters = guessedLettersCopy;
+			console.log(this.checkVictory(isLetterContain));
 			return this;
 		} 
-		this.numberAttempts--;
-		this.arrayIncorrectLetters.push(letter);
-		console.log(this.checksVictory(flagPresenceLetters));
+		this.attemptCount--;
+		this.incorrectLetters.push(letter);
+		console.log(this.checkVictory(isLetterContain));
 		return this;
 	};
 	this.getGuessedString = function () {
-		return this.arrayGuessedLetters.join('');
+		return this.guessedLetters.join('');
 	};
 	this.getErrorsLeft = function () {
-		return this.numberAttempts;
+		return this.attemptCount;
 	};
 	this.getWrongSymbols = function () {
-		return this.arrayIncorrectLetters;
+		return this.incorrectLetters;
 	};
 	this.getStatus = function () {
 		return `${this.getGuessedString()} | errors left ${this.getErrorsLeft()}`
 	};
 	this.startAgain = function (newWord) {
 		this.word = newWord.split('');
-		this.arrayGuessedLetters = new Array(this.word.length).fill('_');
-		this.arrayIncorrectLetters = new Array();
-		this.numberAttempts = 6;
+		this.guessedLetters = new Array(this.word.length).fill('_');
+		this.incorrectLetters = new Array();
+		this.attemptCount = 6;
 		return this;
 	};
-	this.checksVictory = function (flagPresenceLetters) {
-		let flagVictory = !(this.arrayGuessedLetters.some( function (letter) {
+	this.checkVictory = function (isLetterContain) {
+		let isWinner = !(this.guessedLetters.some( function (letter) {
 			return letter === '_';
 		}));
-		if(this.numberAttempts < 0) {
+		if(this.attemptCount < 0) {
 			return `You Lose!`;
-		} else if(flagVictory) {
+		} else if(isWinner) {
 			return `${this.getGuessedString()} | You Win!`;
-		} else if(flagPresenceLetters) {
+		} else if(isLetterContain) {
 			return this.getGuessedString();
 		} 
 		return `wrong letter, errors left ${this.getErrorsLeft()} | ${this.getWrongSymbols().join(',')}`;
