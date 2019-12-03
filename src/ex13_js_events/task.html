@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Kanban Board</title>
+	<link rel="stylesheet" href="task.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap&subset=cyrillic" rel="stylesheet"> 
+</head>
+<body>
+	<header class="header">
+		<div class="header_logo">
+			<h1 class="header_logo_title">Awesome Kanban Board</h1>
+		</div>
+		<button class="header_add_list_button">Create new list</button>
+		<button id="header_login" class="header_login">
+			<span class="header_photo_user"></span>
+			<span class="header_login_button"></span>
+		</button>
+	</header>
+	<main class="main">
+		<article class="kanban">
+			<section class="kanban_unit backlog">
+				<div class="kanban_unit_header">
+					<h2 class="kanban_title">Backlog</h2>
+					<button class="kanban_menu_open"></button>
+				</div>
+				<div class="kanban_scroll_part">
+					<ul id="backlog_list" class="kanban_list">
+					</ul>
+				</div>
+				<div id="backlog_footer" class="kanban_unit_footer">
+					<button id="backlog_add" class="kanban_add-card">
+						Add card
+					</button>
+				</div>
+			</section>
+			<section class="kanban_unit ready">
+				<div class="kanban_unit_header">
+					<h2 class="kanban_title">Ready</h2>
+					<button class="kanban_menu_open"></button>
+				</div>
+				<div class="kanban_scroll_part">
+					<ul id="ready_list" class="kanban_list">																
+					</ul>
+				</div>
+				<div id="ready_footer" class="kanban_unit_footer">
+					<button id="ready_add" class="kanban_add-card">
+						Add card
+					</button>
+				</div>
+			</section>
+			<section class="kanban_unit progress">
+				<div class="kanban_unit_header">
+					<h2 class="kanban_title">In Progress</h2>
+					<button class="kanban_menu_open"></button>
+				</div>
+				<div class="kanban_scroll_part">
+					<ul id="progress_list" class="kanban_list">															
+					</ul>
+				</div>
+				<div id="progress_footer" class="kanban_unit_footer">
+					<button id="progress_add" class="kanban_add-card">
+						Add card
+					</button>
+				</div>
+			</section>			
+			<section class="kanban_unit finished">
+				<div class="kanban_unit_header">
+					<h2 class="kanban_title">Finished</h2>
+					<button class="kanban_menu_open"></button>
+				</div>
+				<div class="kanban_scroll_part">
+					<ul id="finished_list" class="kanban_list">																
+					</ul>
+				</div>
+				<div id="finished_footer" class="kanban_unit_footer">
+					<button id="finished_add" class="kanban_add-card">
+						Add card
+					</button>
+				</div>
+			</section>					
+		</article>
+	</main>
+	<footer class="footer">
+		<p class="footer_active_task">Active tasks: &lt;N&gt;</p>
+		<p class="footer_finished_task">Finished tasks: &lt;M&gt;</p>
+		<p class="footer_board_by">Kanban board by &lt;NAME&gt;, &lt;YEAR&gt;</p>
+	</footer>
+	<script src="task.js"></script>
+</body>
+</html>
