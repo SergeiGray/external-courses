@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Kanban Board</title>
+	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap&subset=cyrillic" rel="stylesheet"> 
+</head>
+<body>
+	<!--#include virtual="page_header/header.shtml"-->
+	<!--#include virtual="page_main/main.shtml"-->
+	<!--#include virtual="page_footer/footer.html"-->
+	<script src="script.js" type="module"></script>
+</body>
+</html>

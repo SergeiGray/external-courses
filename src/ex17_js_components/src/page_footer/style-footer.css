@@ -1,0 +1,29 @@
+.footer {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-between;
+	-ms-align-items: center;
+	align-items: center;
+	width: 100%;
+	min-height: 55px;
+	background-color: #0067A3;
+}
+
+.footer p {
+	color: #fff;
+}
+
+.footer_active_task {
+	margin: 0 36px 0 67px;
+}
+
+.footer_finished_task {
+	margin-right: auto;
+}
+
+.footer_board_by {
+	margin-right: 24px;
+}

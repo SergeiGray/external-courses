@@ -1,0 +1,13 @@
+<section class="kanban_unit finished">
+	<div class="kanban_unit_header">
+		<h2 class="kanban_title">Finished</h2>
+		<button class="kanban_menu_open"></button>
+	</div>
+	<div class="kanban_scroll_part">
+		<ul id="finished_list" class="kanban_list">																
+		</ul>
+	</div>
+	<div id="finished_footer" class="kanban_unit_footer">
+		<!--#include virtual="../button_add_task/button_add_task_finished.shtml"-->
+	</div>
+</section>

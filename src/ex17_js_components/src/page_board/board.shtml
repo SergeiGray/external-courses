@@ -1,0 +1,6 @@
+<article class="kanban">
+	<!--#include virtual="../board_unit/board_unit_backlog.shtml"-->
+	<!--#include virtual="../board_unit/board_unit_ready.shtml"-->
+	<!--#include virtual="../board_unit/board_unit_progress.shtml"-->
+	<!--#include virtual="../board_unit/board_unit_finished.shtml"-->		
+</article>

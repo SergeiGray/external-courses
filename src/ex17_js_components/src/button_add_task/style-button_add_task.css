@@ -1,0 +1,33 @@
+.kanban_add-card {
+	display: flex;
+	align-self: flex-start;
+	justify-content: flex-start;
+	align-items: center;
+	padding-left: 20px;
+	border: none;
+	background-color: transparent;
+	font-size: 18px;
+	line-height: 21px;
+	color: #5E6C84;
+	background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 7H9V2C9 1.448 8.552 1 8 1C7.448 1 7 1.448 7 2V7H2C1.448 7 1 7.448 1 8C1 8.552 1.448 9 2 9H7V14C7 14.552 7.448 15 8 15C8.552 15 9 14.552 9 14V9H14C14.552 9 15 8.552 15 8C15 7.448 14.552 7 14 7Z' fill='%235E6C84'/%3E%3C/svg%3E%0A");
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+
+.kanban_add-card:hover {
+	cursor: pointer;
+	color: #0079bf;
+	background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 7H9V2C9 1.448 8.552 1 8 1C7.448 1 7 1.448 7 2V7H2C1.448 7 1 7.448 1 8C1 8.552 1.448 9 2 9H7V14C7 14.552 7.448 15 8 15C8.552 15 9 14.552 9 14V9H14C14.552 9 15 8.552 15 8C15 7.448 14.552 7 14 7Z' fill='%230079bf'/%3E%3C/svg%3E%0A");
+}
+
+.kanban_add-card.disable {
+	cursor: default;
+	opacity: 0.3;
+}
+
+.kanban_add-card.disable:hover {
+	cursor: default;
+	opacity: 0.3;
+	color: #5E6C84;
+	background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 7H9V2C9 1.448 8.552 1 8 1C7.448 1 7 1.448 7 2V7H2C1.448 7 1 7.448 1 8C1 8.552 1.448 9 2 9H7V14C7 14.552 7.448 15 8 15C8.552 15 9 14.552 9 14V9H14C14.552 9 15 8.552 15 8C15 7.448 14.552 7 14 7Z' fill='%235E6C84'/%3E%3C/svg%3E%0A");
+}

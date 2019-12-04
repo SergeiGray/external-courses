@@ -1,0 +1,14 @@
+@import url("page_header/style-header.css");
+@import url("page_main/style-main.css");
+@import url("page_board/style-board.css");
+@import url("board_unit/style-board_unit.css");
+@import url("button_add_task/style-button_add_task.css");
+@import url("page_footer/style-footer.css");
+
+body {
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+	font-family: 'Roboto', sans-serif;
+	font-size: 18px;
+}

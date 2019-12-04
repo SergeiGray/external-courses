@@ -1,0 +1,7 @@
+.main {
+	box-sizing: border-box;
+	height: calc(100% - 125px);
+	margin-bottom: 12px;
+	background-color: #0079bf;
+	padding: 20px;
+}
