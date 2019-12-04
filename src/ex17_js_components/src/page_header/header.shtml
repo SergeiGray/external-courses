@@ -1,0 +1,9 @@
+<header class="header">
+
+	<!--#include virtual="../logo/logo.html"-->
+	
+	<!--#include virtual="../button_add_new/button_add_new.html"-->
+
+	<!--#include virtual="../button_dropdown_menu/button_dropdown_menu.html"-->
+
+</header>

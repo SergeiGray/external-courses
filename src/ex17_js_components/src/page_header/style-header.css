@@ -1,0 +1,17 @@
+@import url("../logo/style-logo.css");
+@import url("../button_add_new/style-button_add_new.css");
+@import url("../button_dropdown_menu/style-button_dropdown_menu.css");
+
+.header {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-between;
+	-ms-align-items: center;
+	align-items: center;
+	width: 100%;
+	min-height: 55px;
+	background-color: #0067A3;
+}
